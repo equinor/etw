@@ -4,6 +4,8 @@ matrix:
   include:
     - python: '3.5'
     - python: '3.6'
+      env:
+        - DEPLOY=1
     - python: '3.7'
 
 before_install:
@@ -22,7 +24,8 @@ deploy:
   - provider: pypi
     distributions: bdist_wheel
     on:
+      condition: $DEPLOY
       tags: true
-    user: jegm # pypi user name
+    user: statoil-travis
     password:
-      secure: encrypted-password
+      secure: HiNJ6RVs59O+VQqnA1qF33ECu66TRcu/GFA9EU2U49/V4juCEVYhjIhhYATq/2y6TCAOD48XzstTgVa3bopPv6DKDJaFFkmiprfGDENLmy+8MUK+gHKPjeoMIT8cIVTyYjFW/KF8NtUpl6qC8QmO7RrcCLYGZAlpphJBlOdayXIOWiIarmAJwdFX0M/USgn9KnWW2RbFQoWUeEFCXeHW1XO7jLPx+4nZZ+/9Ff83WzBfhrKgN8kXPlpOYAIA/AXMxA+QK1dYa69AP5gAL4PU5p9kytM8QTUavpVNj/Ovn1hnwSMd6sFaK+DG9gk3b5aNFJCqDIkEMTvBHdXfxU8OP5za93gjBNWmUrBhBETr4oZKAllsP07UZ1m9ER9ineSlpb3v+2uxGqJ1tHFaaKeLInwiBvMHAtyKrZOxt84ghtYFdCdZEEg+PfSKVhKXd6t1kav/XYPS3Y3LbAGzBvSGkf6/rV/GEb7emmM26uVTzNC4Su7cen/5on16T522/hyw74NPbExCNwWyuonGnlQxUtjUMq14g6rn7fM74TSPIuy5+D8/Aa8+uBaAiJoUL1uiJN9SIvKKXOlPlfPftk38qa+3u936BNInWp+a6DO3bXV8vyTCJV/38c18dFHkKSvx1rkjM3zOIZ9tS+F7lC+qL5ucaoAynVz0RWcVyKtperQ=
