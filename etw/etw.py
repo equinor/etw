@@ -56,7 +56,13 @@ def etw(ns, nt, cost=None, max_shift=None):
     def weighted_table(idx):
         i, k = idx
         i, k = i % ns, k % nt
-        w = max(max(i + 1, k + 1) / min(i + 1, k + 1), 1.0)
+
+        # Idealized:
+        # w = max(max(i + 1, k + 1) / min(i + 1, k + 1), 1.0)
+
+        # Actual:
+        w = max(max(i + 1, k + 1) / L[i][k], 1.0)
+
         return T[i][k] * w
 
     min_b = min(((i, -1) for i in range(max_shift, ns)), key=weighted_table)
