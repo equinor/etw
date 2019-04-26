@@ -15,10 +15,10 @@ install:
   - python3 -m pip install --upgrade pip
   - python3 -m pip install --upgrade -r requirements-dev.txt
   - python3 -m pip install --upgrade -r requirements.txt
-  - python3 -m flake8 etw
 
 script:
   - python3 setup.py test
+  - python3 -m flake8 etw
 
 deploy:
   - provider: pypi

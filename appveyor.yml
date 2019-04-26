@@ -1,11 +1,10 @@
-version: {branch}-{build}
+version: '{branch}-{build}'
 
 cache:
   - '%LOCALAPPDATA%\pip\Cache'
 
 environment:
   matrix:
-    fast_finish: true
     - PYTHON_HOME: C:\Python35
       PYTHON_VERSION: 3.5
       PYTHON_ARCH: 32
@@ -25,8 +24,15 @@ environment:
       PYTHON_VERSION: 3.7
       PYTHON_ARCH: 64
 
+matrix:
+  fast_finish: true
+
 install:
+  - python -m pip install --upgrade pip
   - python -m pip install --upgrade -r requirements-dev.txt
+  - python -m pip install --upgrade -r requirements.txt
+
+build: off
 
 test_script:
   - python setup.py test
